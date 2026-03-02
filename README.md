@@ -1,14 +1,14 @@
 ## Building systems that count nanoseconds and money
 
-MSc AI at Edinburgh | Ex-Juniper Networks (3 years in real-time telemetry)
+MSc AI at Edinburgh | Ex-Juniper Networks (3+ years in real-time telemetry)
 
-Currently writing code that doesn't make traders cry and teaching machines to think without exploding in production
+Currently writing code that doesn't make traders cry and teaching machines to think without exploding in production.
 
 ---
 
 ### What I actually do
 
-I spent three years at Juniper Networks making network telemetry systems that either work in microseconds or don't work at all. Real-time data processing, OpenConfig implementations, the kind of infrastructure that keeps networks running while everyone else sleeps.
+I spent more than three years at Juniper Networks making network telemetry systems that either work in microseconds or don't work at all. Real-time data processing, OpenConfig implementations, the kind of infrastructure that keeps networks running while everyone else sleeps.
 
 Now I'm at Edinburgh learning how to make AI systems that survive production. Because brilliant research models are great until they meet actual data.
 
