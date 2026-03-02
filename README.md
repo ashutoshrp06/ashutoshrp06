@@ -2,73 +2,133 @@
 
 MSc AI at Edinburgh | Ex-Juniper Networks (3 years in real-time telemetry)
 
-Currently writing C++ that doesn't make traders cry
+Currently writing C++ that doesn't make traders cry and teaching machines to think without exploding in production
 
-I spend most of my time making computers go fast. Three years at Juniper taught me that network telemetry systems either work in microseconds or they don't work at all. Now I'm at Edinburgh learning how to make them think while they're at it.
+---
 
-**What I actually do**
+### What I actually do
 
-Systems that process data faster than most people process their morning coffee. Built real-time telemetry infrastructure serving production networks. Currently exploring how AI and low-latency systems can coexist without one killing the other.
+I spent three years at Juniper Networks making network telemetry systems that either work in microseconds or don't work at all. Real-time data processing, OpenConfig implementations, the kind of infrastructure that keeps networks running while everyone else sleeps.
+
+Now I'm at Edinburgh learning how to make AI systems that survive production. Because brilliant research models are great until they meet actual data.
 
 **Languages I speak fluently**
 
-C++ when performance matters, Python when sanity matters, C when both are optional. Also SQL, Go, and whatever else the problem demands.
+C++ when performance matters, Python when sanity matters, C when both are optional. Also Scala, Go, SQL, and whatever else the problem demands.
 
-**Things I've shipped**
+**Current focus**
 
-- Real-time network telemetry processing millions of events per second (Juniper Networks)
-- Limit order book simulator because sometimes you need to understand how money moves
-- Samantha, an OS assistant that reached hackathon finals by making terminals less hostile
-- Distributed sparse matrix engine because some problems are too big for one machine
+Building trading systems and low-latency infrastructure. Writing a dissertation on automating benchmark construction for LLMs in finance. Making terminals less hostile to humans. The usual.
 
-Currently targeting quant dev roles where microseconds matter and the coffee is probably excellent.
+---
 
-**Find me elsewhere**
+### Things I've shipped
 
-[LinkedIn](https://linkedin.com/in/ashutoshpatil3) | Currently in Edinburgh, occasionally in reality
+#### **Friday + DocLM** | Featured
+**AI-powered CLI for network engineers who debug infrastructure at 2am**
 
+Production-grade debugging tool that combines a fine-tuned LLM with a fully local RAG pipeline and atomic transaction engine. Diagnoses gRPC failures, TCP tuning disasters, and kernel parameters without sending a single byte to external APIs. Four validation gates prevent hallucinations. Every destructive operation gets a dry-run, user confirmation, and automatic LIFO rollback on failure.
 
-# Limit Order Book Simulator
+DocLM is the brain behind Friday. LoRA fine-tuned Qwen2.5-Coder-3B trained on network telemetry debugging, gRPC failure patterns, TCP tuning runbooks, and YANG model documentation. Now hosted on HuggingFace for anyone who wants to teach their terminal to speak infrastructure.
 
-What happens when you need to understand market microstructure but don't have access to a real exchange. Built in C++ because anything else would miss the point.
+`Go` `vLLM` `LoRA` `RAG` `Qdrant` `ONNX`
 
-## What it does
+- [GitHub (Friday)](https://github.com/rtsh13/friday)
+- [Project Dashboard](https://tgifriday.vercel.app/)
+- [DocLM on HuggingFace](https://huggingface.co/ashutoshrp06/DocLM)
 
-Simulates order book dynamics with the kind of performance that matters when you're thinking about trading systems. Price-time priority matching, realistic latency modeling, and the ability to replay historical data without setting your laptop on fire.
+---
 
-## Why C++
+#### **Limit Order Book Simulator** | Ongoing
+**High-performance LOB in modern C++17 for HFT systems**
 
-Because when you're simulating millions of orders, garbage collection is not your friend. Lock-free data structures and cache-aware algorithms make this run faster than you'd expect.
+Price-time priority matching, O(1) order cancellation, integer arithmetic because floating point errors in trading systems are how you accidentally buy a small country. Cache-friendly data structures that would make an HFT firm nod approvingly. Currently optimizing memory layout and adding SIMD where it makes sense and showing off where it doesn't.
 
-## Technical bits
+`C++17` `HFT` `Order Matching` `CMake`
 
-- Custom memory allocator for order management
-- Lock-free order matching engine
-- Microsecond-precision event handling
-- Support for multiple matching algorithms
+- [GitHub](https://github.com/ashutoshrp06/lob-simulator)
 
-Built this to understand how market makers actually work. Turns out they care a lot about queue position.
+---
 
+#### **NASDAQ ITCH Feed Parser** | C++ Systems
+**Binary market data feed parser for ITCH 5.0**
 
-# Samantha
+Zero-copy parsing, big-endian to little-endian byte swapping, pragma pack structs that match wire format down to the bit. Pairs with the LOB Simulator to reconstruct order books from raw exchange messages. The unglamorous plumbing that runs before your fancy trading algorithm even knows a price exists.
 
-Terminals are great until you need to do something you haven't memorized. This teaches your OS to speak in something other than exit codes.
+`C++17` `Binary Parsing` `ITCH 5.0` `CMake`
 
-## What it actually does
+- [GitHub](https://github.com/ashutoshrp06/feed-parser)
 
-Intelligent terminal assistant that understands natural language and translates it into system operations. Won a place in hackathon finals by making file management less painful than it usually is.
+---
 
-## Architecture
+#### **Multi-Strategy Algorithmic Trading System** | HackTheBurgh 2025
+**Production-grade trading platform with three complementary strategies**
 
-Three-tier system because sometimes simple doesn't scale. Python for the AI layer using LangGraph, Go for filesystem operations where performance matters, and a coordination layer that keeps them from fighting.
+Built for Optiver's Challenge. Integrates ML-powered sentiment analysis (85% accuracy on financial news using TF-IDF), statistical arbitrage exploiting cross-listing inefficiencies, and adaptive market making. Complete with circuit breakers, position limits, and automated loss prevention. Because losing money quickly is easy. Losing it slowly while pretending you have a strategy is art.
 
-## Technical highlights
+`Python` `Scikit-learn` `TF-IDF` `Risk Management` `Statistical Arbitrage`
 
-- Hybrid Python-Go architecture for speed where it matters
-- LangGraph for agentic reasoning about user intent
-- Async filesystem operations in Go
-- Natural language to shell command translation
+- [GitHub](https://github.com/rtsh13/hacktheburgh-xii)
 
-Because life's too short to remember every flag for every command.
+---
 
+#### **Samantha** | OpenEuler Challenge Finalist
+**CLI assistant that teaches your OS to speak human**
 
+Hybrid AI system combining Python LLM reasoning with Go compiled execution. Transforms complex CLI operations into natural language. Non-technical users can perform advanced file operations with 90% fewer commands. Self-correcting agentic workflows, content-aware search using RAG architecture with ChromaDB. Semantic search across filesystems in under 5 seconds. Reached finals at Edinburgh's Huawei-sponsored OpenEuler Challenge.
+
+`Python` `Go` `LangChain` `ChromaDB` `RAG` `HuggingFace`
+
+- [GitHub](https://github.com/ashutoshrp06/samantha)
+
+---
+
+#### **Distributed Sparse Matrix Engine** | Distributed Systems
+**High-performance sparse matrix multiplication on Apache Spark**
+
+Implements COO, CSR, and CSC formats with smart format detection. Achieved 2-10x speedup compared to Spark's MLlib. Zero driver bottlenecks, fully distributed computation, no collect() calls anywhere. The kind of project where you spend three days debugging a partitioning strategy and then pretend it was obvious all along.
+
+`Scala` `Apache Spark` `Distributed Computing` `COO/CSR/CSC` `Tensor Ops`
+
+- [GitHub](https://github.com/rtsh13/dune)
+
+---
+
+### MSc Dissertation
+
+**Automating Benchmark Construction in the Financial Domain**
+
+Working with Aveni on building LLM benchmarks that don't age like milk. Multi-agent systems generating evaluation data dynamically for real financial services tasks. Information extraction from call transcripts, document summarization, classification where the stakes are higher than academic bragging rights. The goal is benchmarks that evolve, stay uncontaminated, and measure things that actually matter.
+
+*Institution* - The University of Edinburgh  
+*Industry Partner* - Aveni  
+*Supervisors* - Alexandra Birch-Mayne, Barry Haddow
+
+---
+
+### Experience highlights
+
+**Juniper Networks** | Software Engineer II (Dec 2023 - Aug 2025)
+- Engineered 5+ new data streaming features for JVision real-time telemetry platform
+- Led test plan redesign for new product from clean slate
+- Resolved 50+ high-priority production bugs, improved system stability by 15%
+
+**Juniper Networks** | Software Engineer I (Aug 2022 - Nov 2023)
+- Optimized C/C++ codebase, reduced memory leak instances by 20%
+- Implemented and validated multiple OpenConfig YANG data models
+
+**Juniper Networks** | Software Engineering Intern (Feb 2022 - Jul 2022)
+- Designed 20+ YANG data models enabling 20+ new hardware platforms
+- Built Python automation reducing version control audit time by 95%
+
+---
+
+### Find me elsewhere
+
+[Portfolio Website](https://ashutoshrp06.github.io) | [LinkedIn](https://linkedin.com/in/ashutoshpatil3)
+
+Currently in Edinburgh, occasionally in reality
+
+---
+
+Targeting quant dev and SDE roles at firms where microseconds matter and the coffee is probably excellent.
