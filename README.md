@@ -2,7 +2,7 @@
 
 MSc AI at Edinburgh | Ex-Juniper Networks (3 years in real-time telemetry)
 
-Currently writing C++ that doesn't make traders cry and teaching machines to think without exploding in production
+Currently writing code that doesn't make traders cry and teaching machines to think without exploding in production
 
 ---
 
