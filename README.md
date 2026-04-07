@@ -39,14 +39,25 @@ DocLM is the brain behind Friday. LoRA fine-tuned Qwen2.5-Coder-3B trained on ne
 
 ---
 
-#### **Limit Order Book Simulator** | Ongoing
-**High-performance LOB in modern C++17 for HFT systems**
+#### **Limit Order Book Simulator + Optimized Rewrite** | C++ Systems
+**Built it. Benchmarked it. Winced at the numbers. Rewrote it.**
 
-Price-time priority matching, O(1) order cancellation, integer arithmetic because floating point errors in trading systems are how you accidentally buy a small country. Cache-friendly data structures that would make an HFT firm nod approvingly. Currently optimizing memory layout and adding SIMD where it makes sense and showing off where it doesn't.
+lob-simulator started as a full LOB in C++17. Price-time priority matching, O(1) order cancellation, IOC and FOK order types, execution report callbacks, Google Test suite. Correct, well tested, and slow by HFT standards. Exactly what you write before you understand why speed matters.
 
-`C++17` `HFT` `Order Matching` `CMake`
+Then came lob-simulator-optimized. Swapped std::map for a direct-indexed array (O(1) price level access, no tree traversal), heap allocation for a pre-allocated memory pool, and added a lock-free SPSC queue for the feed handler to matching engine pipeline. Intrusive linked lists maintain FIFO order within price levels without any separate allocation.
 
-- [GitHub](https://github.com/ashutoshrp06/lob-simulator)
+Results on 1M orders, MacBook Air M4, -O3:
+- Add order: 1843ns → 32.9ns (56x)
+- Cancel order: 633ns → 22ns (29x)
+- Add order with match: 283ns → 26.7ns (11x)
+- SPSC vs mutex queue: 6.4ns vs 22.1ns per message
+
+Spent more time debugging a corrupted memory pool than I'd like to admit. Turns out uint64_t and negative numbers have opinions about each other.
+
+`C++17` `Memory Pool` `Lock-free SPSC` `HFT` `CMake` `Google Test`
+
+- [Original](https://github.com/ashutoshrp06/lob-simulator)
+- [Optimized](https://github.com/ashutoshrp06/lob-simulator-optimized)
 
 ---
 
